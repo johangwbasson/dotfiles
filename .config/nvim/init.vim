@@ -51,6 +51,8 @@ Plug 'mbbill/undotree'
 Plug 'haishanh/night-owl.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'lifepillar/vim-solarized8'
+Plug 'itchyny/lightline.vim'
+
 
 call plug#end()
 
@@ -85,6 +87,7 @@ let g:lightline = { 'colorscheme': 'palenight' }
 "set background=dark
 "colorscheme solarized8_high
 
+set laststatus=2
 
 " General 
 let mapleader = " "
