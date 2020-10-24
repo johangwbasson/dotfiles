@@ -1,0 +1,45 @@
+[user]
+	name = Johan Basson
+#	email = johan@datafox.co.za
+	email = johan@datafox.co.za
+#	email = johangwbasson@gmail.com
+[core]
+	autocrlf = input
+[gc]
+	autoDetach = false
+[pull]
+	rebase = true
+[commit]
+	gpgSign = false
+[push]
+	default = matching
+[difftool "Meld"]
+	path = /usr/bin/meld
+	cmd = '/usr/bin/meld' $LOCAL $REMOTE
+[mergetool "Meld"]
+	path = /usr/bin/meld
+	cmd = meld $LOCAL $MERGED $REMOTE --output $MERGED
+	trustExitCode = false
+[merge]
+	tool = Meld
+[mergetool]
+	keepBackup = false
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[cola]
+	spellcheck = false
+[filesystem "Oracle Corporation|1.8.0_242|/dev/sdb4"]
+	timestampResolution = 1001 microseconds
+	minRacyThreshold = 4498 microseconds
+[filesystem "Azul Systems, Inc.|1.8.0_252|tmpfs"]
+	timestampResolution = 1001 microseconds
+	minRacyThreshold = 6330 microseconds
+[filesystem "Oracle Corporation|1.8.0_262|/dev/sdb4"]
+	timestampResolution = 1001 microseconds
+	minRacyThreshold = 5591 microseconds
+[diff]
+	tool = Meld
+[gui]
+	editor = code
