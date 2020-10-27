@@ -39,8 +39,8 @@ Plug 'kaicataldo/material.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'leafgarland/typescript-vim'
 Plug 'udalov/kotlin-vim'
-Plug 'plasticboy/vim-markdown'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rhysd/vim-gfm-syntax'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -93,6 +93,10 @@ let g:lightline = { 'colorscheme': 'palenight' }
 "colorscheme solarized8_high
 
 set laststatus=2
+
+let g:gfm_syntax_enable_always = 0
+let g:gfm_syntax_enable_filetypes = ['markdown.gfm']
+autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
 
 " General 
 let mapleader = " "
