@@ -94,9 +94,9 @@ let g:lightline = { 'colorscheme': 'palenight' }
 
 set laststatus=2
 
-let g:gfm_syntax_enable_always = 0
-let g:gfm_syntax_enable_filetypes = ['markdown.gfm']
-autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
+let g:gfm_syntax_enable_always = 1
+"let g:gfm_syntax_enable_filetypes = ['markdown.gfm']
+"autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
 
 " General 
 let mapleader = " "
