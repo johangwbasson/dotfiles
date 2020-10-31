@@ -1,3 +1,33 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'kaicataldo/material.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'leafgarland/typescript-vim'
+Plug 'udalov/kotlin-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rhysd/vim-gfm-syntax'
+Plug 'preservim/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mbbill/undotree'
+Plug 'haishanh/night-owl.vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'godlygeek/tabular'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'udalov/kotlin-vim'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'hdiniz/vim-gradle'
+Plug 'vim-airline/vim-airline'
+Plug 'sheerun/vim-polyglot'
+Plug 'honza/vim-snippets'
+
+call plug#end()
+
 syntax on
 set encoding=UTF-8
 filetype plugin on
@@ -12,11 +42,7 @@ set smartcase
 set noswapfile
 set undodir=~/.vim/undodir
 set undofile
-set incsearch
-
-map <C-V> "+gP                                  
-imap <C-V> <ESC><C-V>i                           
-vmap <C-C> "+y          
+set nohlsearch incsearch
 
 set colorcolumn=120
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -32,34 +58,6 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 "
 " :CocInstall coc-json coc-tsserver coc-python coc-css coc-html coc-java
 " coc-sql coc-yaml coc-xml
-
-call plug#begin('~/.vim/plugged')
-
-Plug 'kaicataldo/material.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'leafgarland/typescript-vim'
-Plug 'udalov/kotlin-vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'rhysd/vim-gfm-syntax'
-Plug 'preservim/nerdcommenter'
-Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mbbill/undotree'
-"Plug 'ctrlpvim/ctrlp.vim'
-Plug 'haishanh/night-owl.vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'godlygeek/tabular'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'udalov/kotlin-vim'
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'hdiniz/vim-gradle'
-
-call plug#end()
 
 " Theme
 if (has('nvim'))
@@ -95,8 +93,6 @@ let g:lightline = { 'colorscheme': 'palenight' }
 set laststatus=2
 
 let g:gfm_syntax_enable_always = 1
-"let g:gfm_syntax_enable_filetypes = ['markdown.gfm']
-"autocmd BufRead,BufNew,BufNewFile README.md setlocal ft=markdown.gfm
 
 " General 
 let mapleader = " "
@@ -107,6 +103,11 @@ let g:netrw_winsize = 25
 
 let g:ctrlp_use_caching = 0
 set clipboard+=unnamedplus
+
+" Keys
+map <C-V> "+gP                                  
+imap <C-V> <ESC><C-V>i                           
+vmap <C-C> "+y          
 
 nnoremap <esc> :noh<return><esc>
 
