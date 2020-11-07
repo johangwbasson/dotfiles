@@ -28,6 +28,7 @@ Plug 'honza/vim-snippets'
 
 call plug#end()
 
+set nocompatible    
 syntax on
 set encoding=UTF-8
 filetype plugin on
