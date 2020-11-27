@@ -25,6 +25,7 @@ Plug 'hdiniz/vim-gradle'
 Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'honza/vim-snippets'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -48,17 +49,6 @@ set nohlsearch incsearch
 set colorcolumn=120
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" Plugins
-"
-" Plugin Install:
-"
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-"
-" COC
-"
-" :CocInstall coc-json coc-tsserver coc-python coc-css coc-html coc-java
-" coc-sql coc-yaml coc-xml
 
 " Theme
 if (has('nvim'))
@@ -182,3 +172,18 @@ vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
 nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-NewClass)
 nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
 
+" Wiki
+let g:vimwiki_list = [{'path': '~/MEGA/wiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" Plugins
+"
+" Plugin Install:
+"
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"
+" COC
+"
+" :CocInstall coc-json coc-tsserver coc-python coc-css coc-html coc-java
+" coc-sql coc-yaml coc-xml

@@ -18,7 +18,7 @@
 	cmd = '/usr/bin/meld' $LOCAL $REMOTE
 [mergetool "Meld"]
 	path = /usr/bin/meld
-	cmd = meld $LOCAL $MERGED $REMOTE --output $MERGED
+	cmd = '/usr/bin/meld' $BASE $LOCAL $REMOTE $MERGED
 	trustExitCode = false
 [merge]
 	tool = Meld
@@ -43,3 +43,11 @@
 	tool = Meld
 [gui]
 	editor = code
+[filesystem "Azul Systems, Inc.|11.0.9|/dev/sdb2"]
+	timestampResolution = 5000 nanoseconds
+	minRacyThreshold = 6777 microseconds
+[credential]
+	helper = store
+[filesystem "Azul Systems, Inc.|11.0.9|/dev/sdb4"]
+	timestampResolution = 11000 nanoseconds
+	minRacyThreshold = 7622 microseconds
