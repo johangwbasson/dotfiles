@@ -29,6 +29,7 @@ _comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
 bindkey -v
+bindkey "\e[3~" delete-char  # Delete fix
 export KEYTIMEOUT=1
 
 # VIM : Map Caps lock to esc
