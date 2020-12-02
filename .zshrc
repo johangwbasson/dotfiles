@@ -37,5 +37,20 @@ zinit light sindresorhus/pure
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# Enable auto cd
+setopt auto_cd
+
+# Enable z (https://github.com/rupa/z)
+. $HOME/bin/z.sh
+
+# Load powerlevel config
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# SDK Man                                                                                                               
+export SDKMAN_DIR="/home/johan/.sdkman"                                                                                 
+[[ -s "/home/johan/.sdkman/bin/sdkman-init.sh" ]] && source "/home/johan/.sdkman/bin/sdkman-init.sh"                    
+                                                                                                                         
+# NVIM                                                                                                                  
+export NVM_DIR="$HOME/.nvm"                                                                                             
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm                                                      
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
