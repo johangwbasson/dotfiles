@@ -41,7 +41,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 setopt auto_cd
 
 # Enable z (https://github.com/rupa/z)
-. $HOME/bin/z.sh
+. $HOME/bin/z.sh
 
 # Load powerlevel config
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
