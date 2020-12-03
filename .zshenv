@@ -23,7 +23,7 @@ alias b='buku --suggest'
 
 # Exports
 export WORKSPACE=$HOME/workspace
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export GRADLE_HOME=$HOME/Applications/gradle-6.7.1
 export GRADLE_OPTS=-Dorg.gradle.daemon=true
 export CM_API_URL=http://192.168.3.252:8080/

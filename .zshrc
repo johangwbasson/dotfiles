@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 
 ### Added by Zinit's installer
@@ -32,10 +32,36 @@ zinit light-mode for \
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+# Plugin history-search-multi-word loaded with investigating.
+zinit load zdharma/history-search-multi-word
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# Docker Compose
+zinit ice from"gh-r" as"program" mv"docker* -> docker-compose"
+zinit light docker/compose
+
+# Vim
+zinit ice as"program" atclone"rm -f src/auto/config.cache; ./configure" \
+    atpull"%atclone" make pick"src/vim"
+zinit light vim/vim
+
+# Dir Env
+#zinit ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+#    atpull'%atclone' src"zhook.zsh"
+#zinit light direnv/direnv
+
+#zinit ice from"gh-r" as"program" mv"direnv* -> direnv"
+#zinit light direnv/direnv
+
+# Load the pure theme, with zsh-async library that's bundled with it.
+#zinit ice pick"async.zsh" src"pure.zsh"
+#zinit light sindresorhus/pure
+
+# Load fzf
+#zinit ice from"gh-r" as"program"
+#zinit load junegunn/fzf-bin
+
+# Load Powerlevel
+#zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Enable auto cd
 setopt auto_cd
@@ -44,13 +70,15 @@ setopt auto_cd
 . $HOME/bin/z.sh
 
 # Load powerlevel config
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# SDK Man                                                                                                               
-export SDKMAN_DIR="/home/johan/.sdkman"                                                                                 
-[[ -s "/home/johan/.sdkman/bin/sdkman-init.sh" ]] && source "/home/johan/.sdkman/bin/sdkman-init.sh"                    
-                                                                                                                         
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+ 
 # NVIM                                                                                                                  
 export NVM_DIR="$HOME/.nvm"                                                                                             
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm                                                      
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Pure prompt
+fpath+=$HOME/.zsh/pure
+
+autoload -U promptinit; promptinit
+prompt pure
