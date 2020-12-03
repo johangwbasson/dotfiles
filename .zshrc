@@ -53,8 +53,8 @@ zinit light vim/vim
 #zinit light direnv/direnv
 
 # Load the pure theme, with zsh-async library that's bundled with it.
-#zinit ice pick"async.zsh" src"pure.zsh"
-#zinit light sindresorhus/pure
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
 
 # Load fzf
 #zinit ice from"gh-r" as"program"
