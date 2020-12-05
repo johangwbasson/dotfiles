@@ -21,7 +21,7 @@ alias qa-web-api='export CM_API_URL=http://13.81.215.174:8080'
 alias devserver-web-api='export CM_API_URL=http://192.168.3.252'
 alias v=nvim
 alias open=xdg-open
-alias ls='exa -l --color=always --group-directories-first'
+alias ls='exa --color=always --group-directories-first'
 alias lso='/bin/ls'
 alias b='buku --suggest'
 
