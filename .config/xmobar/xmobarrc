@@ -2,8 +2,12 @@
 -- install xmobar with these flags: --flags="with_alsa" --flags="with_mpd" --flags="with_xft"  OR --flags="all_extensions"
 -- you can find weather location codes here: http://weather.noaa.gov/index.html
 
-Config { font    = "xft:JetBrainsMono Nerd Font:pixelsize=14:antialias=true:hinting=true"
-				, additionalFonts = [ "xft:monospace:pixelsize=15" ]
+-- "xft:JetBrainsMono Nerd Font:pixelsize=14:antialias=true:hinting=true"
+Config { font    = "xft:RobotoMono Nerd Font:pixelsize=15:antialias=true:hinting=true"
+				, additionalFonts = [ 
+                                        "xft:monospace:pixelsize=15",
+                                        "xft:JetBrainsMono Nerd Font Mono:pixelsize=14"
+                                    ]
 								, bgColor = "#282A36"
 								, fgColor = "#B45BCF"
 								, position = Static { xpos = 0, ypos = 0, width=1900,  height = 20 },
