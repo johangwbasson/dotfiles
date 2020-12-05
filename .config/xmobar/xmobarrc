@@ -6,7 +6,7 @@ Config { font    = "xft:JetBrainsMono Nerd Font:pixelsize=14:antialias=true:hint
 				, additionalFonts = [ "xft:monospace:pixelsize=15" ]
 								, bgColor = "#282A36"
 								, fgColor = "#B45BCF"
-								, position = Top
+								, position = Static { xpos = 0, ypos = 0, width=1900,  height = 20 },
 								, lowerOnStart = True
 								, hideOnStart = False
 								, allDesktops = True
