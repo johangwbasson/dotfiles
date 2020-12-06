@@ -10,7 +10,8 @@ Config { font    = "xft:RobotoMono Nerd Font:pixelsize=15:antialias=true:hinting
                                     ]
 								, bgColor = "#282A36"
 								, fgColor = "#B45BCF"
-								, position = Static { xpos = 0, ypos = 0, width=1900,  height = 20 },
+							--	, position = Static { xpos = 0, ypos = 0, width=1900,  height = 20 },
+                                , position = TopP  0 50
 								, lowerOnStart = True
 								, hideOnStart = False
 								, allDesktops = True
@@ -42,11 +43,11 @@ Config { font    = "xft:RobotoMono Nerd Font:pixelsize=15:antialias=true:hinting
 								, "--high"     , "green"
 								, "--" -- battery specific options
 								-- discharging status
-								, "-o"	, "<left>% (<timeleft>)"
+							--	, "-o"	, "<left>% (<timeleft>)"
 								-- AC "on" status
-								, "-O"	, "<fc=#dAA520>Charging</fc>"
+							--	, "-O"	, "<fc=#dAA520>Charging</fc>"
 								-- charged status
-								, "-i"	, "<fc=#006000>Charged</fc>"
+							--	, "-i"	, "<fc=#006000>Charged</fc>"
 								] 50
 
 								-- Runs a standard shell command 'uname -r' to get kernel version
