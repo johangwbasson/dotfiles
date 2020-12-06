@@ -35,6 +35,8 @@ import XMonad.Actions.CycleWS (moveTo, shiftTo, WSType(..), nextScreen, prevScre
 import XMonad.Actions.GridSelect
 import XMonad.Actions.DynamicWorkspaces (addWorkspacePrompt, removeEmptyWorkspace)
 import XMonad.Actions.MouseResize
+import XMonad.Actions.SpawnOn
+import XMonad.Actions.SpawnOn
 import qualified XMonad.Actions.ConstrainedResize as Sqr
 
     -- Layouts modifiers
@@ -71,6 +73,12 @@ myTextEditor    = "vim"     -- Sets default text editor
 myBorderWidth   = 2         -- Sets border width for windows
 windowCount     = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
+intelljUltimate = "/opt/idea-UI/bin/idea.sh"
+vivaldi         = "/usr/bin/vivaldi-stable"
+googleChrome    = "/usr/bin/google-chrome-stable"
+vsCode          = "/usr/bin/code"
+thunderbird     = "/opt/thunderbird/thunderbird"
+spotify         = "/usr/bin/spotify"
 
 data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 
@@ -113,12 +121,21 @@ main = do
 myStartupHook = do
           spawnOnce "picom &"
           spawnOnce "nitrogen --restore &"
-          spawnOnce "stalonetray &"
+          spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
-          spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
           spawnOnce "xset r rate 200 25"
+          spawnOnce "/usr/lib/notification-daemon/notification-daemon  &"
           setWMName "XMonad"
+          spawnOn  "workspace1" intelljUltimate
+          spawnOn  "workspace2" vivaldi
+          spawnOn  "workspace3" googleChrome
+          spawnOn  "workspace4" myTerminal
+          spawnOn  "workspace5" vsCode
+          spawnOn  "workspace6" thunderbird
+          spawnOn  "workspace9" spotify
+
+
 
 
 ---GRID SELECT
@@ -233,11 +250,12 @@ myKeys =
         , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to previous workspace
 
         , ("M-<Return>", spawn (myTerminal ++ " -e zsh"))
-        , ("M-t", spawn "telegram-desktop")
+        --  , ("M-t", spawn "telegram-desktop")
 		
     --- Dmenu
-        , ("M-p", spawn "dmenu_run")
-        , ("M-e", spawn "~/.config/dmenu/dmenu_emoji.sh")
+        -- , ("M-p", spawn "dmenu_run")
+        , ("M-p", spawn "rofi -show drun -show-icons")
+        -- , ("M-e", spawn "~/.config/dmenu/dmenu_emoji.sh")
 
 
     -- Multimedia Keys
@@ -267,7 +285,8 @@ xmobarEscape = concatMap doubleLts
         
 myWorkspaces :: [String]   
 myWorkspaces = clickable . (map xmobarEscape) 
-               $ ["dev", "www", "mail", "mus", "vbox", "ops1", "ops2", "ops3", "misc"]
+               $ ["\59317 ", "\62778 ", "\62056 ", "\59285 ", "\62964 ", "\63215 ", "\61705 ", "\64450 ", "\61884 "]
+               -- "java" ,  "apps", "chrome", "term",  "journal", "mail", "vbox", "misc", "music"
   where                                                                      
         clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
                       (i,ws) <- zip [1..9] l,                                        
