@@ -60,6 +60,7 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.ZoomRow (zoomRow, zoomIn, zoomOut, zoomReset, ZoomMessage(ZoomFullToggle))
 import XMonad.Layout.IM (withIM, Property(Role))
+import XMonad.Layout.Tabbed
 
 import qualified XMonad.StackSet as W
 
@@ -79,6 +80,17 @@ googleChrome    = "/usr/bin/google-chrome-stable"
 vsCode          = "/usr/bin/code"
 thunderbird     = "/opt/thunderbird/thunderbird"
 spotify         = "/usr/bin/spotify"
+virtualBox      = "/usr/bin/virtualbox"
+
+wsDev           = "1"
+wsApps          = "2"
+wsWeb           = "3"
+wsTerm          = "4"
+wsJournal       = "5"
+wsMail          = "6"
+wsVbox          = "7"
+wsMisc          = "8"
+wsMusic         = "9"
 
 data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
 
@@ -92,7 +104,7 @@ main = do
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
     -- xmproc1 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarrc0"
     xmonad $ withUrgencyHook LibNotifyUrgencyHook $ ewmh desktopConfig
-        { manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageHook desktopConfig <+> manageDocks
+        { manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageHook desktopConfig <+> manageDocks <+> manageSpawn
         , logHook = dynamicLogWithPP xmobarPP
                         -- { ppOutput = \x -> hPutStrLn xmproc0 x >> hPutStrLn xmproc1 x
                         { ppOutput = \x -> hPutStrLn xmproc0 x 
@@ -126,15 +138,14 @@ myStartupHook = do
           spawnOnce "volumeicon &"
           spawnOnce "xset r rate 200 25"
           spawnOnce "/usr/lib/notification-daemon/notification-daemon  &"
-          setWMName "XMonad"
-          spawnOn  "workspace1" intelljUltimate
-          spawnOn  "workspace2" vivaldi
-          spawnOn  "workspace3" googleChrome
-          spawnOn  "workspace4" myTerminal
-          spawnOn  "workspace5" vsCode
-          spawnOn  "workspace6" thunderbird
-          spawnOn  "workspace9" spotify
-
+          setWMName "LG3D"
+        --   spawnOn  wsDev intelljUltimate
+        --   spawnOn  wsApps vivaldi
+        --   spawnOn  wsWeb googleChrome
+        --   spawnOn  wsTerm myTerminal
+        --   spawnOn  wsJournal vsCode
+        --   spawnOn  wsMail thunderbird
+        --   spawnOn  wsMusic spotify
 
 
 
@@ -251,6 +262,12 @@ myKeys =
 
         , ("M-<Return>", spawn (myTerminal ++ " -e zsh"))
         --  , ("M-t", spawn "telegram-desktop")
+        , ("M-i", spawn intelljUltimate)
+        , ("M-v", spawn vivaldi)
+        , ("M-g", spawn googleChrome)
+        , ("M-s", spawn spotify)
+        , ("M-c", spawn vsCode)
+        , ("M-t", spawn thunderbird)
 		
     --- Dmenu
         -- , ("M-p", spawn "dmenu_run")
@@ -282,10 +299,10 @@ xmobarEscape = concatMap doubleLts
   where
         doubleLts '<' = "<<"
         doubleLts x   = [x]
-        
+
 myWorkspaces :: [String]   
 myWorkspaces = clickable . (map xmobarEscape) 
-               $ ["\59317 ", "\62778 ", "\62056 ", "\59285 ", "\62964 ", "\63215 ", "\61705 ", "\64450 ", "\61884 "]
+               $ [wsDev, wsApps, wsWeb, wsTerm, wsJournal, wsMail, wsVbox, wsMisc, wsMusic] 
                -- "java" ,  "apps", "chrome", "term",  "journal", "mail", "vbox", "misc", "music"
   where                                                                      
         clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
@@ -294,11 +311,17 @@ myWorkspaces = clickable . (map xmobarEscape)
 myManageHook :: Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
      [
-        className =? "Firefox"     --> doShift "<action=xdotool key super+2>www</action>"
-      , title =? "Vivaldi"         --> doShift "<action=xdotool key super+2>www</action>"
-      , title =? "irssi"           --> doShift "<action=xdotool key super+6>chat</action>"
-      , className =? "cmus"        --> doShift "<action=xdotool key super+7>media</action>"
-      , className =? "vlc"         --> doShift "<action=xdotool key super+7>media</action>"
+            className =? "jetbrains-idea" --> doShift wsDev
+       ,    className =? "vivaldi-stable" --> doShift wsApps
+       ,    className =? "google-chrome" --> doShift wsWeb
+       ,    className =? "slack" --> doShift wsMisc
+       ,    className =? "spotify" -->  doShift wsMusic
+
+        -- className =? "Firefox"     --> doShift "<action=xdotool key super+2>www</action>"
+    --   , title =? "Vivaldi"         --> doShift "<action=xdotool key super+2>www</action>"
+    --   , title =? "irssi"           --> doShift "<action=xdotool key super+6>chat</action>"
+    --   , className =? "cmus"        --> doShift "<action=xdotool key super+7>media</action>"
+    --   , className =? "vlc"         --> doShift "<action=xdotool key super+7>media</action>"
       , className =? "Virtualbox"  --> doFloat
       , className =? "Gimp"        --> doFloat
       , className =? "Gimp"        --> doShift "<action=xdotool key super+8>gfx</action>"
@@ -309,7 +332,7 @@ myManageHook = composeAll
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats $ 
                mkToggle (NBFULL ?? NOBORDERS ?? EOT) $ myDefaultLayout
              where 
-                 myDefaultLayout = tall ||| grid ||| threeCol ||| threeRow ||| oneBig ||| noBorders monocle ||| space ||| floats
+                 myDefaultLayout = tall ||| grid ||| threeCol ||| threeRow ||| oneBig ||| noBorders monocle ||| space ||| floats ||| simpleTabbed
 
 
 tall       = renamed [Replace "tall"]     $ limitWindows 12 $ spacing 6 $ ResizableTall 1 (3/100) (1/2) []
@@ -321,3 +344,6 @@ monocle    = renamed [Replace "monocle"]  $ limitWindows 20 $ Full
 space      = renamed [Replace "space"]    $ limitWindows 4  $ spacing 12 $ Mirror $ mkToggle (single MIRROR) $ mkToggle (single REFLECTX) $ mkToggle (single REFLECTY) $ OneBig (2/3) (2/3)
 floats     = renamed [Replace "floats"]   $ limitWindows 20 $ simplestFloat
 
+myTabConfig =  def {
+                        inactiveBorderColor = "#FF0000"
+                   ,    activeTextColor  = "#00FF00"}
