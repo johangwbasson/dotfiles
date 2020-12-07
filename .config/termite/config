@@ -1,14 +1,14 @@
 [options]
-allow_bold = true
+#allow_bold = true
 #audible_bell = false
 #bold_is_bright = true
 #cell_height_scale = 1.0
 #cell_width_scale = 1.0
-clickable_url = true
+#clickable_url = true
 #dynamic_title = true
-#font = Monospace 11
-font = MesloLGS NF Regular 10
-#fullscreen = true
+# font = Monospace 9
+font =  Liberation Mono Regular
+fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
 #scroll_on_output = false
@@ -42,56 +42,54 @@ scrollback_lines = 10000
 #scrollbar = off
 
 [colors]
-# If both of these are unset, cursor falls back to the foreground color,
-# and cursor_foreground falls back to the background color.
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
+# Base16 OceanicNext
+# Author: https://github.com/voronianski/oceanic-next-color-scheme
 
-#foreground = #dcdccc
-#foreground_bold = #ffffff
-#background = #3f3f3f
+foreground          = #C0C5CE
+foreground_bold     = #C0C5CE
+cursor              = #C0C5CE
+cursor_foreground   = #1B2B34
+background          = #1B2B34
 
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
+# 16 color space
 
-# If unset, will reverse foreground and background
-#highlight = #2f2f2f
+# Black, Gray, Silver, White
+color0  = #1B2B34
+color8  = #65737E
+color7  = #C0C5CE
+color15 = #D8DEE9
 
-# Colors from color0 to color254 can be set
-#color0 = #3f3f3f
-#color1 = #705050
-#color2 = #60b48a
-#color3 = #dfaf8f
-#color4 = #506070
-#color5 = #dc8cc3
-#color6 = #8cd0d3
-#color7 = #dcdccc
-#color8 = #709080
-#color9 = #dca3a3
-#color10 = #c3bf9f
-#color11 = #f0dfaf
-#color12 = #94bff3
-#color13 = #ec93d3
-#color14 = #93e0e3
-#color15 = #ffffff
+# Red
+color1  = #EC5f67
+color9  = #EC5f67
 
-color0 = #101010
-color1 = #f07178
-color2 = #c3e88d
-color3 = #ffcb6b
-color4 = #82aaff
-color5 = #c792ea
-color6 = #89ddff
-color7 = #d0d0d0
-color8 = #434758
-color9 = #ff8b92
-color10 = #ddffa7
-color11 = #ffe585
-color12 = #9cc4ff
-color13 = #e1acff
-color14 = #a3f7ff
-color15 = #fffff
+# Green
+color2  = #99C794
+color10 = #99C794
 
+# Yellow
+color3  = #FAC863
+color11 = #FAC863
+
+# Blue
+color4  = #6699CC
+color12 = #6699CC
+
+# Purple
+color5  = #C594C5
+color13 = #C594C5
+
+# Teal
+color6  = #5FB3B3
+color14 = #5FB3B3
+
+# Extra colors
+color16 = #F99157
+color17 = #AB7967
+color18 = #343D46
+color19 = #4F5B66
+color20 = #A7ADBA
+color21 = #CDD3DE
 
 [hints]
 #font = Monospace 12
