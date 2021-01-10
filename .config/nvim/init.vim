@@ -30,7 +30,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 
 " - Search
 Plug 'jremmen/vim-ripgrep'
-Plug 'git@github:kien/ctrlp.vim.git'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " - Undo
 Plug 'mbbill/undotree'
@@ -109,8 +109,27 @@ set virtualedit+=block
 " You'll see it a lot below as <leader>
 let mapleader = ","
 
+"
+" COC
+"
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-markdownlint', 'coc-python', 'coc-sql', 'coc-tsserver', 'coc-xml']
+
+"
+" RIPGREP
+"
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+
+"
+" CTRLP
+"
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/build/*,*/node_modules/*,*/.class,*/.jar,*/dist/*
+let g:ctrlp_use_catching = 0
+
+
 " 
-" WINDOWs
+" KEYBOARD SHORTCUTS
 "
 
 " create new vsplit, and switch to it.
@@ -119,7 +138,12 @@ noremap <leader>v <C-w>v
 " Quick buffer switching - like cmd-tab'ing
 nnoremap <leader><leader> <c-^>
 
-"
-" COC
-"
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-markdownlint', 'coc-python', 'coc-sql', 'coc-tsserver', 'coc-xml']
+" Jump between windows
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+" Show undo tree
+nnoremap <leader>u :UndotreeShow<CR>
+
