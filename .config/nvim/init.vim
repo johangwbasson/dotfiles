@@ -24,7 +24,22 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 " Plugins
 call plug#begin('~/.vim/plugged')
 
+" - Theme
+Plug 'vim-airline/vim-airline'
 Plug 'drewtempelmeyer/palenight.vim'
+
+" - Search
+Plug 'jremmen/vim-ripgrep'
+Plug 'git@github:kien/ctrlp.vim.git'
+
+" - Undo
+Plug 'mbbill/undotree'
+
+" - Code Complettion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" - Git
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -52,14 +67,21 @@ let g:lightline = { 'colorscheme': 'palenight' }
 filetype plugin indent on " Filetype auto-detection
 syntax on " Syntax highlighting
 
+set noerrorbells
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab " use spaces instead of tabs.
 set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
+set smartindent
+set nu
+set nowrap
 set shiftround " tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
+
+set undodir=~/.config/nvim/undodir
+set undofile
 
 " We have VCS -- we don't need this stuff.
 set nobackup " We have vcs, we don't need backups.
@@ -78,6 +100,8 @@ set showmatch " live match highlighting
 set hlsearch " highlight matches
 set gdefault " use the `g` flag by default.
 
+set colorcolumn=120
+
 " allow the cursor to go anywhere in visual block mode.
 set virtualedit+=block
 
@@ -85,9 +109,17 @@ set virtualedit+=block
 " You'll see it a lot below as <leader>
 let mapleader = ","
 
+" 
+" WINDOWs
+"
+
 " create new vsplit, and switch to it.
 noremap <leader>v <C-w>v
 
-
 " Quick buffer switching - like cmd-tab'ing
 nnoremap <leader><leader> <c-^>
+
+"
+" COC
+"
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-markdownlint', 'coc-python', 'coc-sql', 'coc-tsserver', 'coc-xml']

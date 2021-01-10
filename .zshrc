@@ -30,8 +30,12 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH=~/.nvm/versions/node/v14.15.0/bin:$PATH
+export PATH=~/.nvm/versions/node/v14.15.3/bin:$PATH
 export NVM_DIR=~/.nvm
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
 
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/johan/.sdkman"
+[[ -s "/home/johan/.sdkman/bin/sdkman-init.sh" ]] && source "/home/johan/.sdkman/bin/sdkman-init.sh"

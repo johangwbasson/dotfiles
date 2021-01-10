@@ -44,3 +44,5 @@ export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-
 # PATH
 export PATH=$HOME/.local/bin::$JAVA_HOME/bin:$PATH:$HOME/bin:/usr/sbin:/sbin:$GRADLE_HOME/bin:$HOME/Dropbox/bin:$WORKSPACE/scripts:$HOME/.cargo/bin
 
+
+export CM_API_URL=http://localhost:8080
