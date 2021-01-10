@@ -39,3 +39,11 @@ export NVM_DIR=~/.nvm
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/johan/.sdkman"
 [[ -s "/home/johan/.sdkman/bin/sdkman-init.sh" ]] && source "/home/johan/.sdkman/bin/sdkman-init.sh"
+
+# Fix disappearing cursor when using cursor keys
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[cursor]=underline
+
+source ~/.fzf/shell/completion.zsh
+source ~/.fzf/shell/key-bindings.zsh
+

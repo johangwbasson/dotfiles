@@ -12,6 +12,7 @@ alias ws="cd $HOME/workspace"
 alias au='/usr/bin/au'
 alias devserver='ssh johan@192.168.3.252'
 alias vi=nvim
+alias vf='nvim $(fzf)'
 alias sc=systemctl
 alias dfm='yadm'
 alias nano='nvim'
@@ -40,6 +41,9 @@ export HAZELCAST_SERVICE_NAME=cibecs
 export BUILD_BUILDNUMBER=1
 export RUST_SRC_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib
+
+export FZF_DEFAULT_COMMAND='rg --files --follow -g "!{.git,node_modules,build,dist,.m2,target}/*" 2> /dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # PATH
 export PATH=$HOME/.local/bin::$JAVA_HOME/bin:$PATH:$HOME/bin:/usr/sbin:/sbin:$GRADLE_HOME/bin:$HOME/Dropbox/bin:$WORKSPACE/scripts:$HOME/.cargo/bin

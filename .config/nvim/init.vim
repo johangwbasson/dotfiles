@@ -27,10 +27,14 @@ call plug#begin('~/.vim/plugged')
 " - Theme
 Plug 'vim-airline/vim-airline'
 Plug 'drewtempelmeyer/palenight.vim'
+" Plug 'joshdick/onedark.vim'
+" Plug 'morhetz/gruvbox'
+Plug 'sheerun/vim-polyglot'
 
 " - Search
 Plug 'jremmen/vim-ripgrep'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " - Undo
 Plug 'mbbill/undotree'
@@ -40,6 +44,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " - Git
 Plug 'tpope/vim-fugitive'
+
+" - Kotlin
+Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
@@ -55,10 +62,17 @@ endif
 " THEME
 "
 set background=dark
+
+" Palenight
 colorscheme palenight
 let g:airline_theme = "palenight"
-let g:lightline = { 'colorscheme': 'palenight' }
+"let g:lightline = { 'colorscheme': 'palenight' }
 
+" One Dark
+"colorscheme onedark
+
+" Gruvbox
+" autocmd vimenter * ++nested colorscheme gruvbox
 
 " 
 " GENERAL SETTINGS
@@ -68,6 +82,7 @@ filetype plugin indent on " Filetype auto-detection
 syntax on " Syntax highlighting
 
 set noerrorbells
+set relativenumber
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -122,10 +137,10 @@ if executable('rg')
 endif
 
 "
-" CTRLP
+" FZF
 "
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/build/*,*/node_modules/*,*/.class,*/.jar,*/dist/*
-let g:ctrlp_use_catching = 0
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8} }
+let $FZF_DEFAULT_OPTS='--reverse'
 
 
 " 
@@ -146,4 +161,13 @@ nnoremap <leader>l :wincmd l<CR>
 
 " Show undo tree
 nnoremap <leader>u :UndotreeShow<CR>
+
+" FZF open file
+nnoremap <silent> <C-f> :Files<CR>
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 

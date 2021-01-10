@@ -228,4 +228,11 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
 
+# FZF
+#
+# https://github.com/gpanders/fzf-prezto
+#
+
 zstyle :prezto:module:prompt theme powerlevel10k
+
+
