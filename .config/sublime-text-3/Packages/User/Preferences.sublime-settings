@@ -1,0 +1,9 @@
+{
+	"color_scheme": "Packages/Materialize/schemes/Material Stereokai.tmTheme",
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	],
+	"theme": "Material Stereokai.sublime-theme"
+}
