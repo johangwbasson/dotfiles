@@ -48,6 +48,22 @@ Plug 'tpope/vim-fugitive'
 " - Kotlin
 Plug 'udalov/kotlin-vim'
 
+" - Java
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'w0rp-ale'
+Plug 'majutsushi/tagbar'
+
+" - Org mode
+Plug 'jceb/vim-orgmode'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 call plug#end()
 
 "
@@ -142,6 +158,38 @@ endif
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8} }
 let $FZF_DEFAULT_OPTS='--reverse'
 
+" 
+" Java
+"
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#sources = {}
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+autocmd FileType java JCEnable
+
+" Shorten error/warning flags
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+" I have some custom icons for errors and warnings but feel free to change them.
+let g:ale_sign_error = '✘✘'
+let g:ale_sign_warning = '⚠⚠'
+
+" Disable or enable loclist at the bottom of vim 
+" Comes down to personal preferance.
+let g:ale_open_list = 0
+let g:ale_loclist = 0
+
+
+" Setup compilers for languages
+
+let g:ale_linters = {
+      \  'cs':['syntax', 'semantic', 'issues'],
+      \  'python': ['pylint'],
+      \  'java': ['javac']
+      \ }
+
+map <C-b> :TagbarToggle<CR>
 
 " 
 " KEYBOARD SHORTCUTS
@@ -171,3 +219,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+"
+" GUI 
+"
+set mouse=a
+
+vmap <LeftRelease> "*ygv
+imap <S-insert> <C-R>*

@@ -28,7 +28,7 @@ alias b='buku --suggest'
 
 # Exports
 export WORKSPACE=$HOME/workspace
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+#export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export GRADLE_HOME=$HOME/Applications/gradle-6.7.1
 export GRADLE_OPTS=-Dorg.gradle.daemon=true
 export CM_API_URL=http://192.168.3.252:8080/
@@ -46,7 +46,7 @@ export FZF_DEFAULT_COMMAND='rg --files --follow -g "!{.git,node_modules,build,di
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # PATH
-export PATH=$HOME/.local/bin::$JAVA_HOME/bin:$PATH:$HOME/bin:/usr/sbin:/sbin:$GRADLE_HOME/bin:$HOME/Dropbox/bin:$WORKSPACE/scripts:$HOME/.cargo/bin
+export PATH=$HOME/.local/bin:$PATH:$HOME/bin:/usr/sbin:/sbin:$GRADLE_HOME/bin:$HOME/Dropbox/bin:$WORKSPACE/scripts:$HOME/.cargo/bin
 
 
 export CM_API_URL=http://localhost:8080
