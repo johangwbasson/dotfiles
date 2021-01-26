@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"FileIcons",
 		"InsertDate",
 		"MarkdownEditing",
 		"Materialize",

@@ -1,3 +1,5 @@
 {
 	"color_scheme": "Packages/Materialize/schemes/Material Stereokai.tmTheme",
+	"draw_centered": false,
+	"word_wrap": false
 }
