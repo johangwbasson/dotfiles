@@ -11,9 +11,12 @@ set scrolloff=3 " Display at least 3 lines around you cursor
 set ignorecase " Ignore case when searching
 set smartcase " If there is an uppercase in your search term
 set clipboard=unnamed
+set sneak
+set easymotion
 
 
 " KEYMAP
+nnoremap <c-h> :set hlsearch!<CR>
 
 map <c-n> <a-n>
 map <c-x> <a-x>

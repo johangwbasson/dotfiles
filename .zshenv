@@ -24,7 +24,7 @@ alias v=nvim
 alias open=xdg-open
 alias ls='exa --color=always --group-directories-first'
 alias lso='/bin/ls'
-alias b='buku --suggest'
+
 
 # Exports
 export WORKSPACE=$HOME/workspace
@@ -46,7 +46,7 @@ export FZF_DEFAULT_COMMAND='rg --files --follow -g "!{.git,node_modules,build,di
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # PATH
-export PATH=$HOME/.local/bin:$PATH:$HOME/bin:/usr/sbin:/sbin:$GRADLE_HOME/bin:$HOME/Dropbox/bin:$WORKSPACE/scripts:$HOME/.cargo/bin
+export PATH=$HOME/.local/bin:$PATH:$HOME/bin:/usr/sbin:/sbin:$GRADLE_HOME/bin:$HOME/Dropbox/bin:$WORKSPACE/scripts:$HOME/.cargo/bin:$HOME/MEGA/Bin
 
 
 export CM_API_URL=http://localhost:8080
