@@ -1,8 +1,6 @@
 [user]
 	name = Johan Basson
-#	email = johan@datafox.co.za
 	email = johan@datafox.co.za
-#	email = johangwbasson@gmail.com
 [core]
 	autocrlf = input
 [gc]
