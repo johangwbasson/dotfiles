@@ -4,6 +4,9 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # Aliases
+alias j=jrnl
+alias sup='jrnl -from yesterday -to today'
+alias fd="fdfind"
 alias e="nvim"
 alias mci='mvn clean install'
 alias gg='/usr/local/bin/gg'
@@ -32,8 +35,8 @@ export WORKSPACE=$HOME/workspace
 export GRADLE_HOME=$HOME/Applications/gradle-6.7.1
 export GRADLE_OPTS=-Dorg.gradle.daemon=true
 export CM_API_URL=http://192.168.3.252:8080/
-export INSTALL4J_HOME=$HOME/applications/install4j8
-export WINDOWS_INSTALL4J_HOME=$HOME/applications/install4j8
+export INSTALL4J_HOME=$HOME/Applications/install4j8
+export WINDOWS_INSTALL4J_HOME=$HOME/Applications/install4j8
 export CIBECS_ENV_SCRIPT=./johan-env.sh
 export CM_API_DOCS_DIR=$HOME/docs
 export WINEARCH="win32"
@@ -42,11 +45,17 @@ export BUILD_BUILDNUMBER=1
 export RUST_SRC_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib
 
-export FZF_DEFAULT_COMMAND='rg --files --follow -g "!{.git,node_modules,build,dist,.m2,target}/*" 2> /dev/null'
+# export FZF_DEFAULT_COMMAND='rg --files --follow -g "!{.git,node_modules,build,dist,.m2,target}/*" 2> /dev/null'
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export FZF_DEFAULT_COMMAND="fdfind . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fdfind -t d . $HOME"
+
 
 # PATH
-export PATH=$HOME/.local/bin:$PATH:$HOME/bin:/usr/sbin:/sbin:$GRADLE_HOME/bin:$HOME/Dropbox/bin:$WORKSPACE/scripts:$HOME/.cargo/bin:$HOME/MEGA/Bin
+export PATH=$HOME/Applications/nvim/bin:$HOME/.local/bin:$PATH:$HOME/bin:/usr/sbin:/sbin:$GRADLE_HOME/bin:$HOME/Dropbox/bin:$WORKSPACE/scripts:$HOME/.cargo/bin:$HOME/MEGA/Bin
 
 
 export CM_API_URL=http://localhost:8080
+source "$HOME/.cargo/env"
