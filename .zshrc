@@ -9,9 +9,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 #
 # Executes commands at the start of an interactive session.
@@ -41,9 +41,9 @@ export SDKMAN_DIR="/home/johan/.sdkman"
 [[ -s "/home/johan/.sdkman/bin/sdkman-init.sh" ]] && source "/home/johan/.sdkman/bin/sdkman-init.sh"
 
 # Fix disappearing cursor when using cursor keys
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[cursor]=underline
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[cursor]=underline
 
-source ~/.fzf/shell/completion.zsh
-source ~/.fzf/shell/key-bindings.zsh
-
+#source ~/.fzf/shell/completion.zsh
+#source ~/.fzf/shell/key-bindings.zsh
+eval "$(starship init zsh)"
