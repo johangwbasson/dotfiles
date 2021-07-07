@@ -34,16 +34,12 @@ from libqtile.utils import guess_terminal
 from libqtile import hook
 
 import os
+import subprocess
+
 from datetime import datetime as dt
 
 mod = "mod4"
 terminal = "st"
-
-def custom_date():
-    return custom_strftime('%A, {S} %B', dt.now())
-
-def custom_strftime(format, t):
-    return t.strftime(format).replace('{S}', str(t.day) + suffix(t.day))
 
 @hook.subscribe.startup_once
 def autostart():
@@ -56,27 +52,20 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(),
-        desc="Move window focus to other window"),
+    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
 
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
-        desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
-        desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(),
-        desc="Move window down"),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
 
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(),
-        desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(),
-        desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(),
-        desc="Grow window down"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
@@ -84,8 +73,7 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"),
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
@@ -94,8 +82,9 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(),
-        desc="Spawn a command using a prompt widget"),
+    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
+    Key([mod], 'p' , lazy.spawn('rofi -show drun -show-icons'),  desc="Launch rofi")
 ]
 
 MYCOLORS = [
@@ -153,7 +142,7 @@ layouts = [
 
 widget_defaults = dict(
     font='Jetbrains Mono',
-    fontsize=14,
+    fontsize=12,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -175,7 +164,7 @@ screens = [
                        padding = 6,
                        ),
               widget.GroupBox(
-                       font = "Jetbrains Monov",
+                       font = "Jetbrains Mono",
                        fontsize = 12,
                        margin_y = 3,
                        margin_x = 0,
