@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright (c) 2010 Aldo Cortesi
 # Copyright (c) 2010, 2014 dequis
 # Copyright (c) 2012 Randall Ma
@@ -32,6 +33,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from libqtile import hook
 
+import os
 from datetime import datetime as dt
 
 mod = "mod4"
@@ -116,7 +118,6 @@ MAGENTA = MYCOLORS[5]
 CYAN = MYCOLORS[6]
 WHITE = MYCOLORS[7]
 
-
 groups = [Group(i) for i in "123456789"]
 
 for i in groups:
@@ -152,60 +153,108 @@ layouts = [
 
 widget_defaults = dict(
     font='Jetbrains Mono',
-    fontsize=12,
-    padding=5,
+    fontsize=14,
+    padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayoutIcon(
-                    scale = 0.6),
-                widget.GroupBox(
-                    borderwidth=1, 
-                    inactive='969696', 
-                    this_current_screen_border='eee8d5',
-                    this_screen_border='eee8d5', 
-                    **widget_defaults),
-                widget.Spacer(),
-                widget.Mpris2(
-                    name='spotify',
-                    objname="org.mpris.MediaPlayer2.spotify",
-                    display_metadata=['xesam:title', 'xesam:artist'],
-                    scroll_chars=None,
-                    stop_pause_text='',
-                    **widget_defaults
-                ),       
-                widget.Notify(),
-                widget.CheckUpdates(distro='Debian', **widget_defaults),
-                widget.Net(
-                    interface = "enp0s3",
-                    format = "{down} ↓↑ {up}",
-                    **widget_defaults
-                ),
-                widget.NetGraph(**widget_defaults),
-                widget.Memory(**widget_defaults),
-                widget.MemoryGraph(**widget_defaults),
-                widget.BatteryIcon(**widget_defaults),
-                widget.Battery(
-                    charge_char='+', 
-                    discharge_char='', 
-                    unknown_char='', 
-                    format='{char}{percent:2.0%}', 
-                    **widget_defaults),
-                widget.Volume(emoji = True,  **widget_defaults),
-                widget.Volume(**widget_defaults),
-                widget.Systray(),
-                widget.Spacer(length = 10),
-                widget.GenPollText(func=custom_date, update_interval=1, **widget_defaults),
-                widget.Clock(**widget_defaults,  format='%H:%M'),
-                widget.Spacer(length = 10),
-            ],
-            24, margin=[0, 0, 0, 0] 
-        )   
-    ),
+          top=bar.Bar(widgets=[
+           widget.Sep(
+                       linewidth = 0,
+                       padding = 6,
+                       ),
+              widget.Image(
+                       filename = "~/.config/qtile/icons/python-white.png",
+                       scale = "False",
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)}
+                       ),
+             widget.Sep(
+                       linewidth = 0,
+                       padding = 6,
+                       ),
+              widget.GroupBox(
+                       font = "Jetbrains Monov",
+                       fontsize = 12,
+                       margin_y = 3,
+                       margin_x = 0,
+                       padding_y = 5,
+                       padding_x = 3,
+                       borderwidth = 3,
+                       rounded = False,
+                       highlight_method = "line"
+                       ),
+              widget.Sep(
+                       linewidth = 0,
+                       padding = 40,
+                       ),
+              widget.WindowName(
+                       padding = 0
+                       ),
+              widget.Systray(
+                       padding = 5
+                       ),
+              widget.Sep(
+                       linewidth = 0,
+                       padding = 6,
+                       ),
+              widget.TextBox(
+                       text = '🖧',
+                       padding = 0,
+                       fontsize = 14
+                       ),
+              widget.Net(
+                       interface = "enp0s3",
+                       format = '{down} ↓↑ {up}',
+                       padding = 5
+                       ),
+              widget.TextBox(
+                       text = " ⟳",
+                       padding = 2,
+                       fontsize = 14
+                       ),
+              widget.CheckUpdates(
+                       update_interval = 1800,
+                       distro = "Debian",
+                       display_format = "{updates} Updates",
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e sudo apt update && sudo apt upgrade')},
+                       ),
+              widget.TextBox(
+                       text = " 🖬",
+                       padding = 0,
+                       fontsize = 14
+                       ),
+              widget.Memory(
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
+                       padding = 5
+                       ),
+              widget.TextBox(
+                       text = '🕨',
+                       padding = 0,
+                       fontsize = 14
+                       ),
+              widget.TextBox(
+                      text = " Vol:",
+                       padding = 0
+                       ),
+              widget.Volume(
+                       padding = 5
+                       ),
+              widget.CurrentLayoutIcon(
+                       custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                       padding = 0,
+                       scale = 0.7
+                       ),
+              widget.CurrentLayout(
+                       padding = 5
+                       ),
+              widget.Clock(
+                       format = "%A, %B %d - %H:%M "
+                       ),
+
+            ], size = 24)
+    )
 ]
 
 # Drag floating layouts.
