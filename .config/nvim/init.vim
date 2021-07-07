@@ -7,6 +7,8 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'habamax/vim-asciidoctor'
+
 call plug#end()
 
 " basics
@@ -27,6 +29,9 @@ set nowrap
 set nu
 set termguicolors
 set wildmenu
+set noerrorbells
+set undodir=~/.vim/undodir
+set undofile
 
 set background=dark
 colorscheme palenight
