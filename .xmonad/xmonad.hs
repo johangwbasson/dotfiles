@@ -325,13 +325,16 @@ myManageHook = composeAll
      , className =? "splash"          --> doFloat
      , className =? "toolbar"         --> doFloat
      , title =? "Oracle VM VirtualBox Manager"  --> doFloat
-     , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
-     , className =? "brave-browser"   --> doShift ( myWorkspaces !! 1 )
-     , className =? "qutebrowser"     --> doShift ( myWorkspaces !! 1 )
-     , className =? "mpv"             --> doShift ( myWorkspaces !! 7 )
-     , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
-     , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
-     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
+--     , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
+--     , className =? "brave-browser"   --> doShift ( myWorkspaces !! 1 )
+--     , className =? "qutebrowser"     --> doShift ( myWorkspaces !! 1 )
+--     , className =? "mpv"             --> doShift ( myWorkspaces !! 7 )
+--     , className =? "Gimp"            --> doShift ( myWorkspaces !! 8 )
+--     , className =? "VirtualBox Manager" --> doShift  ( myWorkspaces !! 4 )
+--     , className =? "chromium"        --> doShift (myWorkspaces !! 0)
+--     , className =? "google-chrome"   --> doShift (myWorkspaces !! 4)
+--     , className =? "spt"             --> doShift (myWorkspaces !! 8)
+--     , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
      , isFullscreen -->  doFullFloat
      ] <+> namedScratchpadManageHook myScratchPads
 
