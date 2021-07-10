@@ -1,0 +1,5 @@
+#!/bin/bash
+
+I=$(apt list --upgradeable 2>/dev/null | wc -l)
+
+echo $((I - 1))
