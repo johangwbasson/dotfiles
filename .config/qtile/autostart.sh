@@ -6,6 +6,8 @@ __kill() { kill -9 "$(pidof "$1")" >/dev/null 2>&1 ; }
 __start() { sleep 1 && "$@" >/dev/null 2>&1 & }
 __running() { pidof "$1" >/dev/null 2>&1 ;}
 
+xset r rate  338 33
+
 nitrogen --restore &
 
 # Apps to autostart

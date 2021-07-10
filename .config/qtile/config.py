@@ -78,7 +78,18 @@ keys = [
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod, "shift"], "c", lazy.window.kill(), desc='Kill active window'),
+
+    Key([mod], "w", lazy.to_screen(0), desc='Keyboard focus to monitor 1'),
+    Key([mod], "e", lazy.to_screen(1), desc='Keyboard focus to monitor 2'),
+
+    Key([mod], "period", lazy.next_screen(), desc='Move focus to next monitor'),
+    Key([mod], "comma",  lazy.prev_screen(), desc='Move focus to prev monitor'),
+
+    # Auto Keys
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -87,25 +98,25 @@ keys = [
     Key([mod], 'p' , lazy.spawn('rofi -show drun -show-icons'),  desc="Launch rofi")
 ]
 
-MYCOLORS = [
-    '#073642',
-    '#dc322f',
-    '#00ff2a',
-    '#b58900',
-    '#268bd2',
-    '#d33682',
-    '#2aa198',
-    '#eee8d5'
-]
+# MYCOLORS = [
+#     '#073642',
+#     '#dc322f',
+#     '#00ff2a',
+#     '#b58900',
+#     '#268bd2',
+#     '#d33682',
+#     '#2aa198',
+#     '#eee8d5'
+# ]
 
-BLACK = MYCOLORS[0]
-RED = MYCOLORS[1]
-GREEN = MYCOLORS[2]
-YELLOW = MYCOLORS[3]
-BLUE = MYCOLORS[4]
-MAGENTA = MYCOLORS[5]
-CYAN = MYCOLORS[6]
-WHITE = MYCOLORS[7]
+# BLACK = MYCOLORS[0]
+# RED = MYCOLORS[1]
+# GREEN = MYCOLORS[2]
+# YELLOW = MYCOLORS[3]
+# BLUE = MYCOLORS[4]
+# MAGENTA = MYCOLORS[5]
+# CYAN = MYCOLORS[6]
+# WHITE = MYCOLORS[7]
 
 groups = [Group(i) for i in "123456789"]
 
@@ -127,17 +138,16 @@ for i in groups:
 layouts = [
     layout.Columns(border_focus_stack='#d75f5f'),
     layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Stack(num_stacks=2),
+    layout.Bsp(),
+    layout.Matrix(),
+    layout.MonadTall(),
+    layout.MonadWide(),
+    layout.RatioTile(),
+    layout.Tile(),
+    layout.TreeTab(),
+    layout.VerticalTile(),
+    layout.Zoomy(),
 ]
 
 widget_defaults = dict(
