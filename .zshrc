@@ -4,6 +4,7 @@
 # Install:
 #
 #   git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+#   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 #
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

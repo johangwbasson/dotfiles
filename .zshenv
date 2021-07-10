@@ -58,5 +58,3 @@ export PATH=$HOME/Applications/nvim/bin:$HOME/.local/bin:$PATH:$HOME/bin:/usr/sb
 
 
 export CM_API_URL=http://localhost:8080
-source "$HOME/.cargo/env"
-if [ -e /home/johan/.nix-profile/etc/profile.d/nix.sh ]; then . /home/johan/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
