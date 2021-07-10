@@ -141,7 +141,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='Jetbrains Mono',
+    font='Jetbrains Mono',   
     fontsize=12,
     padding=3,
 )
@@ -164,8 +164,6 @@ screens = [
                        padding = 6,
                        ),
               widget.GroupBox(
-                       font = "Jetbrains Mono",
-                       fontsize = 12,
                        margin_y = 3,
                        margin_x = 0,
                        padding_y = 5,
@@ -178,8 +176,27 @@ screens = [
                        linewidth = 0,
                        padding = 40,
                        ),
-              widget.WindowName(
-                       padding = 0
+              widget.CurrentLayoutIcon(
+                       custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                       padding = 0,
+                       scale = 0.7,
+                       foreground = '#b294bb'
+                       ),                       
+              widget.CurrentLayout(
+                       padding = 5,
+                       foreground = '#c5c8c6'
+                       ),
+              widget.Sep(
+                       linewidth = 0,
+                       padding = 40,
+                       ),                       
+              widget.WindowName(                        
+                       padding = 0,
+                       foreground= '#8abeb7'
+                       ),
+              widget.Sep(
+                       linewidth = 0,
+                       padding = 40,
                        ),
               widget.Systray(
                        padding = 5
@@ -188,58 +205,24 @@ screens = [
                        linewidth = 0,
                        padding = 6,
                        ),
-              widget.TextBox(
-                       text = '🖧',
-                       padding = 0,
-                       fontsize = 14
-                       ),
               widget.Net(
                        interface = "enp0s3",
                        format = '{down} ↓↑ {up}',
-                       padding = 5
-                       ),
-              widget.TextBox(
-                       text = " ⟳",
-                       padding = 2,
-                       fontsize = 14
-                       ),
-              widget.CheckUpdates(
-                       update_interval = 1800,
-                       distro = "Debian",
-                       display_format = "{updates} Updates",
-                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e sudo apt update && sudo apt upgrade')},
-                       ),
-              widget.TextBox(
-                       text = " 🖬",
-                       padding = 0,
-                       fontsize = 14
+                       padding = 5,
+                       foreground = '#cc6666'
                        ),
               widget.Memory(
                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')},
-                       padding = 5
-                       ),
-              widget.TextBox(
-                       text = '🕨',
-                       padding = 0,
-                       fontsize = 14
-                       ),
-              widget.TextBox(
-                      text = " Vol:",
-                       padding = 0
+                       padding = 5,
+                       foreground = '#b5bd68'
                        ),
               widget.Volume(
-                       padding = 5
-                       ),
-              widget.CurrentLayoutIcon(
-                       custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
-                       padding = 0,
-                       scale = 0.7
-                       ),
-              widget.CurrentLayout(
-                       padding = 5
+                       padding = 5,
+                       foreground = '#f0c674'
                        ),
               widget.Clock(
-                       format = "%A, %B %d - %H:%M "
+                       format = "%A, %B %d - %H:%M ",
+                       foreground = '#81a2be'
                        ),
 
             ], size = 24)
