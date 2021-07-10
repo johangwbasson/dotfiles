@@ -38,6 +38,5 @@ export NVM_DIR=~/.nvm
 # Fix disappearing cursor when using cursor keys
 #typeset -A ZSH_HIGHLIGHT_STYLES
 #ZSH_HIGHLIGHT_STYLES[cursor]=underline
-#source ~/.fzf/shell/key-bindings.zsh
+source ~/.fzf/shell/key-bindings.zsh
 
-eval "$(starship init zsh)"
