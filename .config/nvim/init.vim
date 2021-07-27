@@ -6,6 +6,7 @@ Plug 'drewtempelmeyer/palenight.vim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vimwiki/vimwiki'
 
 Plug 'habamax/vim-asciidoctor'
 
@@ -32,6 +33,7 @@ set wildmenu
 set noerrorbells
 set undodir=~/.vim/undodir
 set undofile
+set nocompatible
 
 set background=dark
 colorscheme palenight
@@ -49,3 +51,19 @@ inoremap <F6> <C-R>=strftime("%a %d %b %Y")<CR>
 " FZF
 nnoremap <silent> <C-p> :Files %:p:h<CR>
 
+" Neovim QT Copy / Paste
+set clipboard+=unnamedplus
+set mouse=r
+
+" Insert Date
+nnoremap <F5> "=strftime("%a %d %b %Y")<CR>P
+inoremap <F5> <C-R>=strftime("%a %d %b %Y")<CR>
+
+" Simulate Ctrl+c, Ctrl+v
+vnoremap <C-C> "+y
+map <C-V>       "+gP
+
+" Vim Wiki
+
+let g:vimwiki_list = [{'path': '~/MEGA/Wiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]

@@ -26,8 +26,10 @@ alias devserver-web-api='export CM_API_URL=http://192.168.3.252'
 alias v=nvim
 alias open=xdg-open
 alias ls='exa --color=always --group-directories-first'
+#alias ls='lsd'
 alias lso='/bin/ls'
-
+alias diary='nvim -c ":VimwikiMakeDiaryNote"'
+alias vw='nvim -c ":VimwikiIndex"'
 
 # Exports
 export WORKSPACE=$HOME/workspace

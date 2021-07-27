@@ -1,6 +1,7 @@
 set ignorecase
 set smartcase
 set scrolloff=3 " 3 lines above/below cursor when scrolling
+set sneak
 
 vmap <C-c> "py
 nmap <C-c> "pyiw

@@ -17,9 +17,9 @@ Config { font    = "xft:Liberation Sans:weight=bold:pixelsize=11:antialias=true:
        , iconRoot = "/home/johan/.xmonad/xpm/"  -- default: "."
        , commands = [
                     -- Time and date
-                      Run Date "<fn=2>\xf017</fn>  %b %d %Y - (%H:%M) " "date" 20
+                      Run Date "<fn=2>\xf017</fn>  %b %d %Y - (%H:%M) " "date" 50
                       -- Network up and down
-                    , Run Network "enp0s3" ["-t", "<fn=2>\xf0ab</fn>  <rx>kb  <fn=2>\xf0aa</fn>  <tx>kb"] 20
+                    , Run Network "enp3s0f1" ["-t", "<fn=2>\xf0ab</fn>  <rx>kb  <fn=2>\xf0aa</fn>  <tx>kb"] 20
                       -- Cpu usage in percent
                     , Run Cpu ["-t", "<fn=2>\xf108</fn>  cpu: (<total>%)","-H","50","--high","red"] 20
                       -- Ram used number and percent
@@ -33,5 +33,5 @@ Config { font    = "xft:Liberation Sans:weight=bold:pixelsize=11:antialias=true:
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{  <fc=#666666>|</fc>  <fc=#b3afc2><fn=3></fn>  <action=`st -e htop`>%uname%</action> </fc> <fc=#666666>|</fc>  <fc=#ecbe7b> <action=`st -e htop`>%cpu%</action> </fc> <fc=#666666>|</fc>  <fc=#ff6c6b> <action=`st -e htop`>%memory%</action> </fc> <fc=#666666>|</fc>  <fc=#51afef> <action=`st -e htop`>%disku%</action> </fc> <fc=#666666>|</fc>  <fc=#98be65> <action=`st -e sudo iftop`>%enp0s3%</action> </fc> <fc=#666666>|</fc>   <fc=#c678dd><fn=2></fn>  <action=`st -e sudo update && sudo apt upgrade`>%aptupdates%</action> </fc> <fc=#666666>|</fc>  <fc=#46d9ff>%date%</fc>            "
+       , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{  <fc=#666666>|</fc>  <fc=#b3afc2><fn=3></fn>  <action=`kitty -e htop`>%uname%</action> </fc> <fc=#666666>|</fc>  <fc=#ecbe7b> <action=`kitty -e htop`>%cpu%</action> </fc> <fc=#666666>|</fc>  <fc=#ff6c6b> <action=`kitty -e htop`>%memory%</action> </fc> <fc=#666666>|</fc>  <fc=#51afef> <action=`kitty -e htop`>%disku%</action> </fc> <fc=#666666>|</fc>  <fc=#98be65> <action=`kitty -e sudo iftop`>%enp3s0f1%</action> </fc> <fc=#666666>|</fc>   <fc=#c678dd><fn=2></fn>  <action=`kitty -e sudo update && sudo apt upgrade`>%aptupdates%</action> </fc> <fc=#666666>|</fc>  <fc=#46d9ff>%date%</fc>            "
        }

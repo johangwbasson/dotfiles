@@ -73,8 +73,8 @@ myModMask :: KeyMask
 myModMask = mod4Mask        -- Sets modkey to super/windows key
 
 myTerminal :: String
--- myTerminal = "kitty"    -- Sets default terminal
-myTerminal = "st"    -- Sets default terminal
+myTerminal = "kitty"    -- Sets default terminal
+-- myTerminal = "st"    -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "chromium"  -- Sets qutebrowser as browser
@@ -105,16 +105,9 @@ myStartupHook = do
     spawnOnce "picom &"
     spawnOnce "nm-applet &"
     spawnOnce "volumeicon &"
-    spawnOnce "conky -c $HOME/.config/conky/xmonad.conkyrc"
+    -- spawnOnce "conky -c $HOME/.config/conky/xmonad.conkyrc"
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
-    -- spawnOnce "/usr/bin/emacs --daemon &" -- emacs daemon for the emacsclient
-    -- spawnOnce "kak -d -s mysession &"  -- kakoune daemon for better performance
-    -- spawnOnce "urxvtd -q -o -f &"      -- urxvt daemon for better performance
-
-    spawnOnce "xargs xwallpaper --stretch < ~/MEGA/Media/Wallpapers"  -- set last saved with xwallpaper
-    -- spawnOnce "/bin/ls ~/wallpapers | shuf -n 1 | xargs xwallpaper --stretch"  -- set random xwallpaper
-    -- spawnOnce "~/.fehbg &"  -- set last saved feh wallpaper
-    -- spawnOnce "feh --randomize --bg-fill ~/wallpapers/*"  -- feh set random wallpaper
+    spawnOnce "feh --randomize --bg-fill ~/MEGA/Media/Wallpapers/*"  -- feh set random wallpaper
     -- spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
     setWMName "LG3D"
 
@@ -324,7 +317,7 @@ myManageHook = composeAll
      , className =? "pinentry-gtk-2"  --> doFloat
      , className =? "splash"          --> doFloat
      , className =? "toolbar"         --> doFloat
-     , title =? "Oracle VM VirtualBox Manager"  --> doFloat
+--     , title =? "Oracle VM VirtualBox Manager"  --> doFloat
 --     , title =? "Mozilla Firefox"     --> doShift ( myWorkspaces !! 1 )
 --     , className =? "brave-browser"   --> doShift ( myWorkspaces !! 1 )
 --     , className =? "qutebrowser"     --> doShift ( myWorkspaces !! 1 )
